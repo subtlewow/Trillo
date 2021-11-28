@@ -1,0 +1,155 @@
+.container {
+    // if the window length falls below 1200px, render the full length of the window. 
+    // the width of our container cannot only be smaller than 1200px and cannot exceed it
+    // if it does, the full 1200px is only rendered.
+    // compared to using width: 120rem, such that when resized, the full 1200px is still being rendered which makes it harder 
+    // for responsive design.
+
+    max-width: 120rem; 
+    margin: 8rem auto; // margin: [top/bottom] [left/right]
+    background-color: var(--color-grey-light-2);
+
+    // box-shadow: [x-offset] [y-offset] [blur] [spread] [color]
+    // spread=0; as we don't want a box-shadow that extends/spreads beyond the container and so by not defining it, the spread is bound to the container itself
+    box-shadow: var(--shadow-dark);
+
+    // no matter how small or big the window is resized, the container is going to remain at 50rem
+    min-height: 50rem;
+
+    // $bp-largest = 1200px/16px = 75em (em over rem as we want font-size of that container to be relative to the font-size of the parent)
+    // so when the parent element changes, we see the same change ripple through the children via using em units.
+    @media only screen and (max-width: $bp-largest) {
+        margin: 0;
+
+        // upon resizing font-size the container no longer has a width of 120rem
+        // the new container width is: 120 * 8 = 960px instead of 1200px
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+.header {
+    height: 7rem;
+    background-color: #fff;
+    border-bottom: var(--line);
+    font-size: 1.4rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media only screen and (max-width: $bp-smallest) {
+        flex-wrap: wrap;
+
+        // align-content modifies the behaviour of the flex-wrap property -- used for multi-line flex boxes. 
+        // align-content aligns on the cross axis
+        // no effect when items are in a single line.
+
+        align-content: space-around;
+        height: 11rem;
+    }
+    
+}
+
+.content {
+    display: flex;
+
+    @media only screen and (max-width: $bp-medium) {
+
+        // by default flex-direction is set to row
+        flex-direction: column;
+    }
+}
+
+.sidebar {
+    background-color: var(--color-grey-dark-1);
+    // background-color: aquamarine;
+
+    // apply flex property to the flex-items, such that flex: [flex-grow] [flex-shrink] [flex-basis]
+    // we don't want it to grow or shrink so those properties are 0
+    // we set the width of this flex item to be 18% of the parent container.
+
+    flex: 0 0 18%; 
+    // height: 100rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media only screen and (max-width: $bp-medium) {
+
+        // by default flex-direction is set to row, so for responsive design when everything gets squashed
+        // set the flex-direction to column. 
+        flex-direction: column;
+    }
+
+}
+
+.hotel-view {
+    background-color: #fff;
+
+    // flex: 1 means the element will grow to occupy the remaining available whitespace.
+    // flex property needs to be set on flex items
+    flex: 1;  
+}
+
+.detail {
+
+    // we set the parent element/container to flex as we want the description and user review containers to be side-by-side
+    display: flex;
+    padding: 4.5rem;
+
+    // by setting font-size to the parent element of the description and user-reviews containers, we do not need to recall it
+    // for the child elements of those containers, such that font-size will be inherited.
+    font-size: 1.4rem;
+    background-color: var(--color-grey-light-1);
+    border-bottom: var(--line);
+
+    @media only screen and (max-width: $bp-medium) {
+        padding: 3rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        flex-direction: column;
+    }
+}
+
+.description {
+    background-color: #fff;
+    
+    // we can use flex: 0 0 x% to define the width of our flex item
+    // and then set flex: 1 onto the user-reviews container
+
+    // when a command is used multiple times throughout your code, write a variable for it
+    // rather than constantly calling the same code over and over again.
+    // simplifies the readibility and understanding of your code.
+    // probably also easier to diagnose, as if we wanted to make a change
+    // we can change it in the variable rather than changing it at every iteration if we weren't using variables. 
+    box-shadow: var(--shadow-light);
+    flex: 0 0 60%;
+    
+    
+    // the user-reviews container grew to have the same height dimensions as the description box
+    // as the default value for the align-items property is stretch.
+    padding: 3rem;
+    margin-right: 4.5rem;
+
+    @media only screen and (max-width: $bp-medium) {
+        padding: 2rem;
+        margin-right: 3rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        margin-right: 0;
+        margin-bottom: 3rem;
+    }
+}
+
+.user-reviews {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
