@@ -4,5 +4,5 @@ Project using Flexbox w/ responsive design from the Udemy course "Advanced CSS a
 
 https://www.udemy.com/course/advanced-css-and-sass/
 
-Preview can be seen here:
+Finished project: 
 https://subtlewow.github.io/Trillo/
