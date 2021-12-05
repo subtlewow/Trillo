@@ -1,8 +1,9 @@
 # Trillo
 
-Project using Flexbox w/ responsive design from the Udemy course "Advanced CSS and Sass: Flexbox, Grid, Animations and More!" by Jonas Schmedtmann.
+Project using only HTML and SCSS to learn development with Flexbox and implementing responsive design, with no Javascript and therefore no functionality. 
+- Using Media Queries at different viewport dimensions for different devices
+- Flexbox positioning (flex-direction, align-items, justify-content etc..)
 
-https://www.udemy.com/course/advanced-css-and-sass/
 
 Finished project: 
 https://subtlewow.github.io/Trillo/
